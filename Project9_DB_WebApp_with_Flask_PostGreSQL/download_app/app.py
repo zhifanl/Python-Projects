@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request, send_file
-from flask.ext.sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 from send_email import send_email
 from sqlalchemy.sql import func
-from werkzeug import secure_filename
+from werkzeug.utils import secure_filename
 
 
 app=Flask(__name__)
@@ -28,6 +28,7 @@ def index():
 def success():
     global file
     if request.method=='POST':
+        #email=request.form['email_name']
         file=request.files["file"]
         file.save(secure_filename("uploaded"+file.filename))
         with open("uploaded"+file.filename,"a") as f:

@@ -15,7 +15,9 @@
           <input type="file" name="file" > <br>
           <button type="submit"> Submit </button>
         </form>
-        {% include btn ignore missing %}
+        {% if btn %}
+        {% include btn %}
+        {% endif %}
       </div>
     </body>
 </html>
